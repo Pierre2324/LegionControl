@@ -35,9 +35,12 @@
             this.btnPowerModes = new System.Windows.Forms.Button();
             this.btnFanCurve = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.textCpuRPM = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelCpuTmp = new System.Windows.Forms.Label();
+            this.labelCpuFanRPM = new System.Windows.Forms.Label();
             this.boxLogo = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelWindow = new System.Windows.Forms.Panel();
             this.menuPanel.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxLogo)).BeginInit();
@@ -172,24 +175,51 @@
             // 
             // panelLogo
             // 
-            this.panelLogo.Controls.Add(this.textCpuRPM);
+            this.panelLogo.Controls.Add(this.label2);
+            this.panelLogo.Controls.Add(this.label1);
+            this.panelLogo.Controls.Add(this.labelCpuTmp);
+            this.panelLogo.Controls.Add(this.labelCpuFanRPM);
             this.panelLogo.Controls.Add(this.boxLogo);
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(199, 250);
             this.panelLogo.TabIndex = 0;
-            this.panelLogo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogo_Paint);
             // 
-            // textCpuRPM
+            // label2
             // 
-            this.textCpuRPM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.textCpuRPM.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textCpuRPM.ForeColor = System.Drawing.Color.Cyan;
-            this.textCpuRPM.Location = new System.Drawing.Point(3, 210);
-            this.textCpuRPM.Multiline = true;
-            this.textCpuRPM.Name = "textCpuRPM";
-            this.textCpuRPM.Size = new System.Drawing.Size(100, 40);
-            this.textCpuRPM.TabIndex = 1;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(100, 200);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 40);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(100, 150);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 40);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label2";
+            // 
+            // labelCpuTmp
+            // 
+            this.labelCpuTmp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelCpuTmp.Location = new System.Drawing.Point(0, 150);
+            this.labelCpuTmp.Name = "labelCpuTmp";
+            this.labelCpuTmp.Size = new System.Drawing.Size(100, 40);
+            this.labelCpuTmp.TabIndex = 1;
+            this.labelCpuTmp.Text = "0 °C";
+            // 
+            // labelCpuFanRPM
+            // 
+            this.labelCpuFanRPM.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelCpuFanRPM.Location = new System.Drawing.Point(0, 200);
+            this.labelCpuFanRPM.Name = "labelCpuFanRPM";
+            this.labelCpuFanRPM.Size = new System.Drawing.Size(100, 40);
+            this.labelCpuFanRPM.TabIndex = 0;
+            this.labelCpuFanRPM.Text = "label1";
             // 
             // boxLogo
             // 
@@ -200,13 +230,12 @@
             this.boxLogo.TabIndex = 0;
             this.boxLogo.TabStop = false;
             // 
-            // panel1
+            // panelWindow
             // 
-            this.panel1.Location = new System.Drawing.Point(200, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1000, 600);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panelWindow.Location = new System.Drawing.Point(200, 0);
+            this.panelWindow.Name = "panelWindow";
+            this.panelWindow.Size = new System.Drawing.Size(1000, 600);
+            this.panelWindow.TabIndex = 1;
             // 
             // formMain
             // 
@@ -214,14 +243,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(1200, 600);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelWindow);
             this.Controls.Add(this.menuPanel);
             this.Name = "formMain";
             this.Text = "LegionControl";
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.menuPanel.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
-            this.panelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxLogo)).EndInit();
             this.ResumeLayout(false);
 
@@ -237,7 +265,10 @@
         private Button btnSettings;
         private Button btnBattery;
         private Button btnPowerModes;
-        private TextBox textCpuRPM;
-        private Panel panel1;
+        private Panel panelWindow;
+        private Label label2;
+        private Label label1;
+        private Label labelCpuTmp;
+        private Label labelCpuFanRPM;
     }
 }

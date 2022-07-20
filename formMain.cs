@@ -4,6 +4,7 @@ namespace LegionControl
     {
         private Button currentBtn;
         private string currentBtnStr;
+        private Form currentForm;
 
         public formMain()
         {
@@ -12,26 +13,31 @@ namespace LegionControl
 
         private void btnStatus_CLick(object sender, EventArgs e)
         {
+            openChildForm(new Forms.formStatus(), sender);
             activateButton(sender, "Status");
         }
 
         private void btnFanCurve_Click(object sender, EventArgs e)
         {
+            openChildForm(new Forms.formFanCurve(), sender);
             activateButton(sender, "FanCurve");
         }
 
         private void btnPowerModes_Click(object sender, EventArgs e)
         {
+            openChildForm(new Forms.formPowerModes(), sender);
             activateButton(sender, "PowerModes");
         }
 
         private void btnBattery_Click(object sender, EventArgs e)
         {
+            openChildForm(new Forms.formBattery(), sender);
             activateButton(sender, "Battery");
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
+            openChildForm(new Forms.formSettings(), sender);
             activateButton(sender, "Settings");
         }
 
@@ -86,6 +92,9 @@ namespace LegionControl
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            //Open status page on app load
+            openChildForm(new Forms.formStatus(), (Button)btnStatus);
+
             //Make the status button cyan when the app is launched
             currentBtn = (Button)btnStatus;
             currentBtn.BackColor = Color.Cyan;
@@ -96,9 +105,9 @@ namespace LegionControl
 
         private void activateButton(object btnSender, string btnSenderStr)
         {
-            if(btnSender != null)
+            if (btnSender != null)
             {
-                if(currentBtn != (Button)btnSender)
+                if (currentBtn != (Button)btnSender)
                 {
                     //Off
                     currentBtn.BackColor = Color.FromArgb(255, 25, 25, 25);
@@ -111,20 +120,27 @@ namespace LegionControl
                     currentBtn = (Button)btnSender;
                     currentBtn.BackColor = Color.Cyan;
                     currentBtn.ForeColor = Color.Black;
-                    currentBtnStr = btnSenderStr +"On";
+                    currentBtnStr = btnSenderStr + "On";
                     currentBtn.Image = (Image)LegionControl.Properties.Resources.ResourceManager.GetObject(currentBtnStr);
-                    
+
                 }
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void openChildForm(Form childForm, object btnSender)
         {
-
-        }
-
-        private void panelLogo_Paint(object sender, PaintEventArgs e)
-        {
+            if(currentForm != null)
+            {
+                currentForm.Close();
+            }
+            currentForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelWindow.Controls.Add(childForm);
+            this.panelWindow.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
 
         }
     }
