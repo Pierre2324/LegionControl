@@ -1,19 +1,38 @@
 namespace LegionControl
 {
-    public partial class mainForm : Form
+    public partial class formMain : Form
     {
-        public mainForm()
+        private Button currentBtn;
+        private string currentBtnStr;
+
+        public formMain()
         {
             InitializeComponent();
         }
 
         private void btnStatus_CLick(object sender, EventArgs e)
         {
-
+            activateButton(sender, "Status");
         }
+
         private void btnFanCurve_Click(object sender, EventArgs e)
         {
+            activateButton(sender, "FanCurve");
+        }
 
+        private void btnPowerModes_Click(object sender, EventArgs e)
+        {
+            activateButton(sender, "PowerModes");
+        }
+
+        private void btnBattery_Click(object sender, EventArgs e)
+        {
+            activateButton(sender, "Battery");
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            activateButton(sender, "Settings");
         }
 
         private void menuPanel_Paint(object sender, PaintEventArgs e)
@@ -65,27 +84,46 @@ namespace LegionControl
                Color.Cyan, 1, ButtonBorderStyle.Solid);// bottom
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
+        private void mainForm_Load(object sender, EventArgs e)
         {
-
+            //Make the status button cyan when the app is launched
+            currentBtn = (Button)btnStatus;
+            currentBtn.BackColor = Color.Cyan;
+            currentBtn.ForeColor = Color.Black;
+            currentBtn.Image = LegionControl.Properties.Resources.StatusOn;
+            currentBtnStr = "StatusOn";
         }
 
-        private void mainForm_Load(object sender, EventArgs e)
+        private void activateButton(object btnSender, string btnSenderStr)
+        {
+            if(btnSender != null)
+            {
+                if(currentBtn != (Button)btnSender)
+                {
+                    //Off
+                    currentBtn.BackColor = Color.FromArgb(255, 25, 25, 25);
+                    currentBtn.ForeColor = Color.White;
+                    currentBtnStr = currentBtnStr.Remove(currentBtnStr.Length - 2, 2);
+                    currentBtnStr += "Off";
+                    currentBtn.Image = (Image)LegionControl.Properties.Resources.ResourceManager.GetObject(currentBtnStr);
+
+                    //On
+                    currentBtn = (Button)btnSender;
+                    currentBtn.BackColor = Color.Cyan;
+                    currentBtn.ForeColor = Color.Black;
+                    currentBtnStr = btnSenderStr +"On";
+                    currentBtn.Image = (Image)LegionControl.Properties.Resources.ResourceManager.GetObject(currentBtnStr);
+                    
+                }
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
         private void panelLogo_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void boxLogo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPowerModes_Click(object sender, EventArgs e)
         {
 
         }

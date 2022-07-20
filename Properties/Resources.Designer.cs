@@ -63,9 +63,9 @@ namespace LegionControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Battery {
+        internal static System.Drawing.Bitmap BatteryOff {
             get {
-                object obj = ResourceManager.GetObject("Battery", resourceCulture);
+                object obj = ResourceManager.GetObject("BatteryOff", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace LegionControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FanCurve {
+        internal static System.Drawing.Bitmap BatteryOn {
             get {
-                object obj = ResourceManager.GetObject("FanCurve", resourceCulture);
+                object obj = ResourceManager.GetObject("BatteryOn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace LegionControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo {
+        internal static System.Drawing.Bitmap FanCurveOff {
             get {
-                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                object obj = ResourceManager.GetObject("FanCurveOff", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace LegionControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PowerMode {
+        internal static System.Drawing.Bitmap FanCurveOn {
             get {
-                object obj = ResourceManager.GetObject("PowerMode", resourceCulture);
+                object obj = ResourceManager.GetObject("FanCurveOn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace LegionControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Settings {
+        internal static System.Drawing.Bitmap PowerModesOff {
             get {
-                object obj = ResourceManager.GetObject("Settings", resourceCulture);
+                object obj = ResourceManager.GetObject("PowerModesOff", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,49 @@ namespace LegionControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Status {
+        internal static System.Drawing.Bitmap PowerModesOn {
             get {
-                object obj = ResourceManager.GetObject("Status", resourceCulture);
+                object obj = ResourceManager.GetObject("PowerModesOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SettingsOff {
+            get {
+                object obj = ResourceManager.GetObject("SettingsOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SettingsOn {
+            get {
+                object obj = ResourceManager.GetObject("SettingsOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusOff {
+            get {
+                object obj = ResourceManager.GetObject("StatusOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusOn {
+            get {
+                object obj = ResourceManager.GetObject("StatusOn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
