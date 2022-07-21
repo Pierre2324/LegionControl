@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace LegionControl.Forms
 {
-    public partial class formFanCurve : Form
+    public partial class F_fanCurve : Form
     {
-        public formFanCurve()
+        public F_fanCurve()
         {
             InitializeComponent();
+        }
+
+        private void metroSetPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

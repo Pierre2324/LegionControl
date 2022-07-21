@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LegionControl.Forms
 {
-    public partial class formPowerModes : Form
+    public partial class F_powerModes : Form
     {
-        public formPowerModes()
+        public F_powerModes()
         {
             InitializeComponent();
         }

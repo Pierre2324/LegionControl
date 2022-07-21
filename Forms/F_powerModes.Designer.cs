@@ -1,6 +1,6 @@
 ﻿namespace LegionControl.Forms
 {
-    partial class formBattery
+    partial class F_powerModes
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // formBattery
+            // formPowerModes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "formBattery";
-            this.Text = "formBattery";
+            this.Name = "formPowerModes";
+            this.Text = "formPowerModes";
             this.ResumeLayout(false);
 
         }

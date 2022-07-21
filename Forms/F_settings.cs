@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace LegionControl.Forms
 {
-    public partial class formStatus : Form
+    public partial class F_settings : Form
     {
-        public formStatus()
+        public F_settings()
         {
             InitializeComponent();
-        }
-
-        private void formStatus_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroSetPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

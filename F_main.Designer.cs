@@ -1,6 +1,6 @@
 ﻿namespace LegionControl
 {
-    partial class formMain
+    partial class F_main
     {
         /// <summary>
         ///  Required designer variable.

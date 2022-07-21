@@ -1,44 +1,44 @@
 namespace LegionControl
 {
-    public partial class formMain : Form
+    public partial class F_main : Form
     {
         private Button currentBtn;
         private string currentBtnStr;
         private Form currentForm;
 
-        public formMain()
+        public F_main()
         {
             InitializeComponent();
         }
 
         private void btnStatus_CLick(object sender, EventArgs e)
         {
-            openChildForm(new Forms.formStatus(), sender);
-            activateButton(sender, "Status");
+            OpenChildForm(new Forms.F_status(), sender);
+            ActivateButton(sender, "Status");
         }
 
         private void btnFanCurve_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.formFanCurve(), sender);
-            activateButton(sender, "FanCurve");
+            OpenChildForm(new Forms.F_fanCurve(), sender);
+            ActivateButton(sender, "FanCurve");
         }
 
         private void btnPowerModes_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.formPowerModes(), sender);
-            activateButton(sender, "PowerModes");
+            OpenChildForm(new Forms.F_powerModes(), sender);
+            ActivateButton(sender, "PowerModes");
         }
 
         private void btnBattery_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.formBattery(), sender);
-            activateButton(sender, "Battery");
+            OpenChildForm(new Forms.F_Battery(), sender);
+            ActivateButton(sender, "Battery");
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.formSettings(), sender);
-            activateButton(sender, "Settings");
+            OpenChildForm(new Forms.F_settings(), sender);
+            ActivateButton(sender, "Settings");
         }
 
         private void menuPanel_Paint(object sender, PaintEventArgs e)
@@ -93,7 +93,7 @@ namespace LegionControl
         private void mainForm_Load(object sender, EventArgs e)
         {
             //Open status page on app load
-            openChildForm(new Forms.formStatus(), (Button)btnStatus);
+            OpenChildForm(new Forms.F_status(), (Button)btnStatus);
 
             //Make the status button cyan when the app is launched
             currentBtn = (Button)btnStatus;
@@ -103,7 +103,7 @@ namespace LegionControl
             currentBtnStr = "StatusOn";
         }
 
-        private void activateButton(object btnSender, string btnSenderStr)
+        private void ActivateButton(object btnSender, string btnSenderStr)
         {
             if (btnSender != null)
             {
@@ -118,7 +118,7 @@ namespace LegionControl
 
                     //On
                     currentBtn = (Button)btnSender;
-                    currentBtn.BackColor = Color.Cyan;
+                    currentBtn.BackColor = Color.Cyan; OpenChildForm
                     currentBtn.ForeColor = Color.Black;
                     currentBtnStr = btnSenderStr + "On";
                     currentBtn.Image = (Image)LegionControl.Properties.Resources.ResourceManager.GetObject(currentBtnStr);
@@ -127,7 +127,7 @@ namespace LegionControl
             }
         }
 
-        private void openChildForm(Form childForm, object btnSender)
+        private void OpenChildForm(Form childForm, object btnSender)
         {
             if(currentForm != null)
             {
