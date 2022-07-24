@@ -1,10 +1,14 @@
+using LegionControl.Utils;
+
 namespace LegionControl
 {
     public partial class F_main : Form
     {
-        private Button currentBtn;
-        private string currentBtnStr;
-        private Form currentForm;
+        Button currentBtn;
+        string currentBtnStr;
+        Form currentForm;
+        Memory memory = new Memory();
+        Compatibility compatibility = new Compatibility();
 
         public F_main()
         {
@@ -92,6 +96,9 @@ namespace LegionControl
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            memory.Initialize();
+            compatibility.Initialize();
+
             //Open status page on app load
             OpenChildForm(new Forms.F_status(), (Button)btnStatus);
 
@@ -101,6 +108,7 @@ namespace LegionControl
             currentBtn.ForeColor = Color.Black;
             currentBtn.Image = LegionControl.Properties.Resources.StatusOn;
             currentBtnStr = "StatusOn";
+
         }
 
         private void ActivateButton(object btnSender, string btnSenderStr)
@@ -118,7 +126,7 @@ namespace LegionControl
 
                     //On
                     currentBtn = (Button)btnSender;
-                    currentBtn.BackColor = Color.Cyan; OpenChildForm
+                    currentBtn.BackColor = Color.Cyan;
                     currentBtn.ForeColor = Color.Black;
                     currentBtnStr = btnSenderStr + "On";
                     currentBtn.Image = (Image)LegionControl.Properties.Resources.ResourceManager.GetObject(currentBtnStr);
@@ -142,6 +150,11 @@ namespace LegionControl
             childForm.BringToFront();
             childForm.Show();
 
+        }
+
+        private void Exit(object sender, FormClosingEventArgs e)
+        {
+            memory.Exit();
         }
     }
 }
