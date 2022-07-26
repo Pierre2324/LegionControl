@@ -10,7 +10,7 @@ namespace LegionControl.Utils
     internal class Memory
     {
         internal string pocPath;
-        internal string rwPath;
+        private string rwPath;
 
         internal int Initialize()
         {
@@ -50,18 +50,39 @@ namespace LegionControl.Utils
         internal string GetData(string method, string address)
         {
             Process poc = new Process();
+            poc.StartInfo.FileName = "cmd.exe";
             poc.StartInfo.Arguments = "/c\"\"" + pocPath + "\" " + method + " " + address + "\"";
             poc.StartInfo.CreateNoWindow = true;
             poc.StartInfo.UseShellExecute = false;
             poc.StartInfo.RedirectStandardOutput = true;
             poc.Start();
             poc.WaitForExit();
-            return poc.StandardOutput.ReadToEnd().Trim();
+            return (Convert.ToByte(Convert.ToInt32(poc.StandardOutput.ReadToEnd().Trim(), 16))).ToString();
+        }
+
+        internal string[] GetDatas(string method, string[] address)
+        {
+            string formatAdress = string.Join(" ", address);
+            Process poc = new Process();
+            poc.StartInfo.FileName = "cmd.exe";
+            poc.StartInfo.Arguments = "/c\"\"" + pocPath + "\" " + method + " " + formatAdress + "\"";
+            poc.StartInfo.CreateNoWindow = true;
+            poc.StartInfo.UseShellExecute = false;
+            poc.StartInfo.RedirectStandardOutput = true;
+            poc.Start();
+            poc.WaitForExit();
+            string[] output = poc.StandardOutput.ReadToEnd().Trim().Split(' ');
+            for (int i=0; i<output.Length; i++)
+                output[i] = (Convert.ToByte(Convert.ToInt32(output[i], 16))).ToString();
+            return output;
+                               //select Convert.ToByte(Convert.ToInt32(n, 16))).ToString().ToArray();
+
         }
 
         internal void SetData(string method, string addressarg)
         {
             Process poc = new Process();
+            poc.StartInfo.FileName = "cmd.exe";
             poc.StartInfo.Arguments = "/c\"\"" + pocPath + "\" " + method + " " + addressarg + "\"";
             poc.StartInfo.CreateNoWindow = true;
             poc.StartInfo.UseShellExecute = false;
