@@ -9,7 +9,7 @@ namespace LegionControl.Utils
 {
     internal class Memory
     {
-        internal string pocPath;
+        private string pocPath;
         private string rwPath;
 
         internal int Initialize()
