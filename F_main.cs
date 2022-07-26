@@ -4,15 +4,31 @@ namespace LegionControl
 {
     public partial class F_main : Form
     {
+        Memory memory = new Memory();
+        Compatibility compatibility = new Compatibility();
+
         Button currentBtn;
         string currentBtnStr;
         Form currentForm;
-        Memory memory = new Memory();
-        Compatibility compatibility = new Compatibility();
+        
 
         public F_main()
         {
             InitializeComponent();
+
+            memory.Initialize();
+            compatibility.Initialize();
+
+            //Open status page on app load
+            OpenChildForm(new Forms.F_status(), (Button)btnStatus);
+
+            //Make the status button cyan when the app is launched
+            currentBtn = (Button)btnStatus;
+            currentBtn.BackColor = Color.Cyan;
+            currentBtn.ForeColor = Color.Black;
+            currentBtn.Image = LegionControl.Properties.Resources.StatusOn;
+            currentBtnStr = "StatusOn";
+
         }
 
         private void btnStatus_CLick(object sender, EventArgs e)
@@ -92,23 +108,6 @@ namespace LegionControl
                Color.FromArgb(255, 25, 25, 25), 1, ButtonBorderStyle.Solid, // top
                Color.Cyan, 1, ButtonBorderStyle.Solid, // right
                Color.Cyan, 1, ButtonBorderStyle.Solid);// bottom
-        }
-
-        private void mainForm_Load(object sender, EventArgs e)
-        {
-            memory.Initialize();
-            compatibility.Initialize();
-
-            //Open status page on app load
-            OpenChildForm(new Forms.F_status(), (Button)btnStatus);
-
-            //Make the status button cyan when the app is launched
-            currentBtn = (Button)btnStatus;
-            currentBtn.BackColor = Color.Cyan;
-            currentBtn.ForeColor = Color.Black;
-            currentBtn.Image = LegionControl.Properties.Resources.StatusOn;
-            currentBtnStr = "StatusOn";
-
         }
 
         private void ActivateButton(object btnSender, string btnSenderStr)
