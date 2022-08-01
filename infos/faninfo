@@ -1,0 +1,34 @@
+Fan Control:
+
+FF00D541 to FF00D54A // Right Fan Speeds
+FF00D551 to FF00D55A // Left Fan Speeds
+
+FF00D5E4 // Right Fan Instant Change
+FF00D5E5 // Left Fan Instant Change
+
+FF00D5FC // Right Fan Target Speed
+FF00D5FD // Left Fan Target Speed
+
+FF00D5E6 // CPU Temp
+FF00D5E7 // GPU Temp
+
+FF00D5E0&E1 // Full Fan RPM for Right Fan, combine and read both from backwards to get RPM
+FF00D5E2&E3 // Full Fan RPM for Left Fan, combine and read both from backwards to get RPM
+
+FF00D406 // Simple Right Fan RPM
+FF00D4FE // Simple Left Fan RPM
+
+p.s
+AMD: FE00D520
+Intel: FF00D520
+2022 Intel: FE0B0520
+----------------------------------------------------------------
+2021/2022 Acceleration control:
+FF00D560 row to FF00D56A // Both Fan Acceleration
+FF00D570 row to FF00D57A // Both fan Deceleration
+
+2020 Acceleration control:
+FF00D3DC  // Right Fan Acceleration
+FF00D3DE  // Left Fan Acceleration
+FF00D3DD // Right Fan Slowdown
+FF00D3DF // Left Fan Slowdown
