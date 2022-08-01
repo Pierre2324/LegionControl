@@ -1,1 +1,1 @@
-# LegionControl
+# LegionControl v1.69
