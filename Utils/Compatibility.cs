@@ -8,21 +8,22 @@ namespace LegionControl.Utils
 {
     internal class Compatibility
     {
-        WMI wmi = new WMI();
 
-        internal string model;
-        string[] supportedModels = {"Lenovo Legion 5 15IMH05H", "Legion 5 15ACH6H" };
+        internal static string model;
+        static string[] supportedModels = {"Lenovo Legion 5 15IMH05H", "Legion 5 15ACH6H" };
 
-        internal string adrsTempCurrentCPU;
-        internal string adrsTempCurrentGPU;
-        internal string adrsRpmCurrentCPU;
-        internal string adrsRpmCurrentGPU;
-        internal string[] adrsFanCurveCPU;
-        internal string[] adrsFanCurveGPU;
+        internal static string adrsTempCurrentCPU;
+        internal static string adrsTempCurrentGPU;
+        internal static string adrsRpmCurrentCPU;
+        internal static string adrsRpmCurrentGPU;
+        internal static string[] adrsFanCurveCPU;
+        internal static string[] adrsFanCurveGPU;
 
 
-        internal void Initialize()
+        internal static void Initialize()
         {
+            WMI wmi = new WMI();
+
             model = wmi.GetDataSelect("root\\CIMV2", "SELECT * FROM Win32_ComputerSystemProduct", "Version");
 
             if (Verify() == 0)
@@ -32,7 +33,7 @@ namespace LegionControl.Utils
             
         }
 
-        private int Verify()
+        private static int Verify()
         {
             foreach (var sm in supportedModels)
                 if (model == sm)
@@ -40,7 +41,7 @@ namespace LegionControl.Utils
             return 0;
         }
 
-        internal void SetVars()
+        private static void SetVars()
         {
             if (model == "Legion 5 15ACH6H")
             {
