@@ -28,7 +28,7 @@ namespace LegionControl.Utils
 
             Process rwCreate = new Process();
             rwCreate.StartInfo.FileName = "cmd.exe";
-            rwCreate.StartInfo.Arguments = "/c \"sc create LegionControl binpath=\"" + rwPath + "\" type=kernel\"";
+            rwCreate.StartInfo.Arguments = "/c sc create LegionControl binpath=" + rwPath + " type=kernel";
             rwCreate.StartInfo.CreateNoWindow = true;
             rwCreate.StartInfo.UseShellExecute = false;
             rwCreate.StartInfo.RedirectStandardOutput = true;
@@ -50,22 +50,22 @@ namespace LegionControl.Utils
         internal string GetData(string method, string address)
         {
             Process poc = new Process();
-            poc.StartInfo.FileName = "cmd.exe";
-            poc.StartInfo.Arguments = "/c\"\"" + pocPath + "\" " + method + " " + address + "\"";
+            poc.StartInfo.FileName = "poc.exe";
+            poc.StartInfo.Arguments = method + " " + address;
             poc.StartInfo.CreateNoWindow = true;
             poc.StartInfo.UseShellExecute = false;
             poc.StartInfo.RedirectStandardOutput = true;
             poc.Start();
             poc.WaitForExit();
-            return (Convert.ToByte(Convert.ToInt32(poc.StandardOutput.ReadToEnd().Trim(), 16))).ToString();
+            return Convert.ToInt32(poc.StandardOutput.ReadToEnd().Trim(), 16).ToString();
         }
 
         internal string[] GetDatas(string method, string[] address)
         {
             string formatAdress = string.Join(" ", address);
             Process poc = new Process();
-            poc.StartInfo.FileName = "cmd.exe";
-            poc.StartInfo.Arguments = "/c\"\"" + pocPath + "\" " + method + " " + formatAdress + "\"";
+            poc.StartInfo.FileName = "poc.exe";
+            poc.StartInfo.Arguments = method + " " + formatAdress;
             poc.StartInfo.CreateNoWindow = true;
             poc.StartInfo.UseShellExecute = false;
             poc.StartInfo.RedirectStandardOutput = true;
@@ -82,8 +82,8 @@ namespace LegionControl.Utils
         internal void SetData(string method, string addressarg)
         {
             Process poc = new Process();
-            poc.StartInfo.FileName = "cmd.exe";
-            poc.StartInfo.Arguments = "/c\"\"" + pocPath + "\" " + method + " " + addressarg + "\"";
+            poc.StartInfo.FileName = "poc.exe";
+            poc.StartInfo.Arguments = method + " " + addressarg;
             poc.StartInfo.CreateNoWindow = true;
             poc.StartInfo.UseShellExecute = false;
             poc.StartInfo.RedirectStandardOutput = true;
@@ -95,7 +95,7 @@ namespace LegionControl.Utils
         {
             Process exitStop = new Process();
             exitStop.StartInfo.FileName = "cmd.exe";
-            exitStop.StartInfo.Arguments = "/c \"sc stop LegionControl\"";
+            exitStop.StartInfo.Arguments = "/c sc stop LegionControl";
             exitStop.StartInfo.CreateNoWindow = true;
             exitStop.StartInfo.UseShellExecute = false;
             exitStop.StartInfo.RedirectStandardOutput = true;
@@ -104,7 +104,7 @@ namespace LegionControl.Utils
 
             Process exitDelete = new Process();
             exitDelete.StartInfo.FileName = "cmd.exe";
-            exitDelete.StartInfo.Arguments = "/c \"sc delete LegionControl\"";
+            exitDelete.StartInfo.Arguments = "/c sc delete LegionControl";
             exitDelete.StartInfo.CreateNoWindow = true;
             exitDelete.StartInfo.UseShellExecute = false;
             exitDelete.StartInfo.RedirectStandardOutput = true;
