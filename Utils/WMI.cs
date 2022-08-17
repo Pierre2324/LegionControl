@@ -15,9 +15,8 @@ namespace LegionControl.Utils
         {
 			ManagementObjectSearcher mos = new ManagementObjectSearcher(root, arg);
 			foreach (ManagementObject mo in mos.Get())
-			{
 				output = mo[item].ToString();
-			}
+
 			return output;
 		}
 		internal void SetData(string root, string instance, string param, string arg)
