@@ -18,13 +18,22 @@
         {
             WMI wmi = new WMI();
 
-            model   = wmi.GetDataSelect("root\\CIMV2", "SELECT * FROM Win32_ComputerSystemProduct", "Version");
+            model = wmi.GetDataSelect("root\\CIMV2", "SELECT * FROM Win32_ComputerSystemProduct", "Version");
             cpuName = wmi.GetDataSelect("root\\CIMV2", "SELECT * FROM Win32_Processor", "Name");
 
             if (Verify())
-                Application.Exit();
-            else
                 SetVars();
+            else
+            {
+                string invalidDeviceMsg = "Current device is incompatible with the Legion Control software.\n" +
+                                          "Make sure you have one of the following models :\n";
+                
+                foreach (string model in supportedModels)
+                    invalidDeviceMsg += model + "\n";
+
+                MessageBox.Show(invalidDeviceMsg);
+                Application.Exit();
+            }
         }
 
         private static bool Verify()
