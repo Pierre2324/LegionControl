@@ -4,7 +4,6 @@ namespace LegionControl.Utils
 {
 	internal class WMI
 	{
-		private string output;
 		internal string GetDataGMZN(string root, string instance, string arg)
 		{
 			ManagementBaseObject mbo = new ManagementObject(root, instance, null).InvokeMethod(arg, null, null);
@@ -14,6 +13,7 @@ namespace LegionControl.Utils
 		internal string GetDataSelect(string root, string arg, string item)
         {
 			ManagementObjectSearcher mos = new ManagementObjectSearcher(root, arg);
+			string output = null;
 			foreach (ManagementObject mo in mos.Get())
 				output = mo[item].ToString();
 
